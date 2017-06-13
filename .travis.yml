@@ -1,5 +1,11 @@
 language: python
+<<<<<<< 5104f15680b2fcc28016e11b1d52189323e1d8d8
 cache: pip
+=======
+cache:
+  -pip
+  directories:
+  - $PWD/geckodriver
 python:
 - '2.7'
 before_install:
