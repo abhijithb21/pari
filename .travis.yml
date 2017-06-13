@@ -1,8 +1,4 @@
 language: python
-cache:
-  -pip
-  directories:
-  - $PWD/geckodriver
 python:
 - '2.7'
 before_install:
