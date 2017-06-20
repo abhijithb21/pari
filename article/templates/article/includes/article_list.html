@@ -52,7 +52,7 @@
                         {% trans "No articles available for " %}
                         {% for lang in LANGUAGES %}
                         {% if request.GET.lang == lang.0 %}
-                        {% blocktrans with tlang=lang.1 %}{{ tlang }}{% endblocktrans %}
+                        {% blocktrans with tlang=lang.1 %} {{ tlang }} {% endblocktrans %}
                         {% trans " in this category."%}
                         {% endif %}
                         {% endfor %}
