@@ -102,6 +102,7 @@
           background: @bg-light;
           padding: 2px 10px;
           letter-spacing: 2px;
+          text-transform: uppercase;
         }
       }
       h1, .featured-content-title {
@@ -113,6 +114,7 @@
         text-align: center;
         line-height: 60px;
         letter-spacing: -1.9px;
+        text-shadow: 0px 0px 13px rgba(0,0,0,0.5);
       }
 
       & > .link-to-page {
@@ -133,6 +135,7 @@
             text-overflow: ellipsis;
             white-space: nowrap;
             vertical-align: middle;
+            text-shadow: 0px 0px 13px rgba(0,0,0,0.5);
           }
 
           &:hover {
@@ -701,7 +704,7 @@
     }
 
     .floating-carousel-buttons {
-      top: ~"calc(100% - 270px)";
+      top: 160px;
       .carousel-buttons-wrapper {
         margin: auto;
       }
@@ -710,7 +713,7 @@
 
 
   #mainnav .navbar-header .navbar-brand-title {
-    display: block;
+    display: block !important;
     margin: 4px;
     color: @dark-grey;
     font-size: 3.3vw;

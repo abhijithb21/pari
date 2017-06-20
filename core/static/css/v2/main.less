@@ -4,7 +4,29 @@
   position: relative;
   height: 80px;
   z-index: 3;
-
+  .header-title-wrapper-fullscreen {
+    position: absolute;
+    left: 27vw;
+    .navbar-brand-title-fullscreen{
+      white-space: nowrap;
+      margin: 25px 0 7px;
+      font-family: Amiri;
+      font-size: 31px;
+      color: black;
+      line-height: 18px;
+      letter-spacing: 0.3px;
+      font-weight: 600;
+    }
+    .navbar-brand-sub-title{
+      text-align: center;
+      span {
+        letter-spacing: 2px;
+        font-size: 13px;
+        font-weight: 500;
+        color: @grey;
+      }
+    }
+  }
   .fixed-header-wrapper {
     position: fixed;
     left: 0px;
@@ -13,13 +35,25 @@
     height: 82px;
   }
 
+  .home-hamburger {
+    &:hover {
+      color: @primary-color;
+    }
+    .hamburger-icon {
+      padding: 30px 15px;
+      color: @grey;
+      font-size: 1.1666666666666667rem;
+      font-weight: 300;
+      letter-spacing: .3px;
+    }
+  }
+
   ul.header-social-icons {
     position: absolute;
     left: 125px;
     top: 14px;
     z-index: 9999;
     display: none;
-
     li {
       list-style-type: none;
       display: inline-block;
@@ -58,9 +92,16 @@
   .nav-header-icon-title {
     padding-right: 0px;
   }
+
+  .stories {
+    a {
+      padding-left: 0 !important;
+    }
+  }
 }
 
 @media only screen and (max-width: 768px) {
+
   #header, #header .fixed-header-wrapper {
     height: 56px;
 
@@ -158,13 +199,13 @@
   }
 
   .dropdown.custom-dropdown {
-  &.open > .dropdown-menu {
+    &.open > .dropdown-menu {
 
-    li {
-      padding: 8px 10px;
+      li {
+        padding: 8px 10px;
+      }
     }
   }
-}
 }
 
 // common styles
