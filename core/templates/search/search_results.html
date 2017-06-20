@@ -32,7 +32,7 @@ Search{% if search_results %} Results{% endif %}
         {% include "includes/two_column_grid.html" with search_results=search_results %}
       {% else %}
           <div class="result-not-found bg-danger">
-            <p class="not-found-msg">Sorry, could not find any results for "{{ query }}". Please try a different query.</p>
+            <p class="not-found-msg">{% blocktrans trimmed %}Sorry, could not find any results for "{{ query }}". Please try a different query.{% endblocktrans %}</p>
           </div>
       {% endif %}
     </div>
