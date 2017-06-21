@@ -1,9 +1,9 @@
 import calendar
 from bs4 import BeautifulSoup
 
+from django.utils.translation import activate
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
-from django.utils import translation
 from django.conf import settings
 from django.http import Http404
 from django.core.cache import caches
@@ -52,6 +52,8 @@ class ArticleDetail(DetailView):
 
     def render_to_response(self, context, **kwargs):
         response = super(ArticleDetail, self).render_to_response(context, **kwargs)
+        activate(context[ 'object' ].language)
+
         if self.request.user.is_staff or self.request.GET.get("preview"):
             return response
         cache = caches['default']
