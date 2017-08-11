@@ -163,29 +163,32 @@
 {% block main %}
 <div class="container content-container" itemscope itemtype="http://schema.org/Article">
 
-
-    <div class="row">
-        <div class="col-lg-1 col-md-1 col-sm-1"></div>
-        <div class="container article-container">
-            <div class="row">
-                <div class="article-content-wrapper">
-                    <div itemprop="articleBody" class="article-content">
-                        {% if article.show_modular_content and article.modular_content %}
-                            <div class="modular-content">
-                                {% for block in article.modular_content %}
-                                    {{ block }}
-                                {% endfor %}
-                            </div>
-                        {% else %}
-                            {{ article.content|richtext }}
-                        {% endif %}
-                    </div>
-                </div>
-
+    {% if article.show_modular_content and article.modular_content %}
+        <div class="modular-article-container">
+            <div class="modular-article">
+                {% for block in article.modular_content %}
+                    {{ block }}
+                {% endfor %}
             </div>
             {% include "article/includes/translator_info.html" with article=article %}
         </div>
-    </div>
+    {% else %}
+        <div class="row">
+            <div class="col-lg-1 col-md-1 col-sm-1"></div>
+            <div class="container article-container">
+                <div class="row">
+                    <div class="article-content-wrapper">
+                        <div itemprop="articleBody" class="article-content">
+                            {{ article.content|richtext }}
+                        </div>
+                    </div>
+
+                </div>
+                {% include "article/includes/translator_info.html" with article=article %}
+            </div>
+        </div>
+    {% endif %}
+
 </div>
 {% include "article/includes/author_info.html" with authors=article.authors.all show_other_stories=True show_translated_bio=True%}
     <div class="container related-stories">
