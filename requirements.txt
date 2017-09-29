@@ -21,3 +21,5 @@ django-modelcluster==3.1
 django-compressor==1.6
 
 requests
+PyWavelets==0.5.2
+numpy==1.13.2
