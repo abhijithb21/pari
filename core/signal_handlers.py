@@ -1,3 +1,5 @@
+from PIL import Image
+
 try:
     from HTMLParser import HTMLParser
 except ImportError:
@@ -31,6 +33,19 @@ def image_halfwidth(sender, instance, **kwargs):
     thumbnail_format = get_image_format("halfwidth")
     instance.get_rendition(thumbnail_format.filter_spec)
 
+@receiver(post_save,sender=AffixImage)
+def watermark_image(sender,instance,**kwargs):
+    from steganography.steganography import Steganography
+    watermark_text=settings.PARI_ENCRYPT_BACKEND['default']['WATERMARK_TEXT']
+    # file_location ='core/test.jpg'
+    file_location =str(instance.file)
+    print file_location
+    Steganography.encode('media/'+file_location,'media/'+file_location,watermark_text)
+    print "Hello I am here with watermark"
+
+@receiver(post_save,sender=AffixImageRendition)
+def watermarked_image(sender,instance,**kwargs):
+    print "Hello I am here with renditions"
 
 @receiver(post_save)
 def create_translations_folder(sender, instance, **kwargs):

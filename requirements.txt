@@ -23,3 +23,5 @@ django-compressor==1.6
 requests
 PyWavelets==0.5.2
 numpy
+
+steganography==0.1.1

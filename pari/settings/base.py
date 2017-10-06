@@ -157,6 +157,14 @@ WAGTAILSEARCH_BACKENDS = {
         'TIMEOUT': 30,
     },
 }
+
+PARI_ENCRYPT_BACKEND = {
+    'default': {
+        'BACKEND': 'watermarker.spike.Watermarker',
+        'WATERMARK_TEXT' : 'PARI',
+    }
+}
+
 WAGTAILADMIN_RICH_TEXT_EDITORS = {
     'default': {
         'WIDGET': 'wagtail.wagtailadmin.rich_text.HalloRichTextArea'
