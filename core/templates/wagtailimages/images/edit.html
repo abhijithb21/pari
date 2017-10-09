@@ -1,5 +1,5 @@
 {% overextends "wagtailimages/images/edit.html" %}{% load static %}
-
+{% load i18n wagtailimages_tags %}
 {% block extra_css %}
 {{ block.super }}
 <link rel="stylesheet" href="{% get_static_prefix %}css/chosen.min.css" type="text/css" media="screen">
@@ -29,6 +29,7 @@ $(function() {
     $("input[id^=id_][id$=date]").each(function(key, id_date) {
         initDateChooser(id_date.id, {"dayOfWeekStart": 0});
     });
+    $(".col2").prepend('{% image image original as original_image %}<a class="button bicolor icon icon-link" download="{{ image.title }}" href="{{ original_image.url }}" style="margin-left: 1em;margin-bottom: .7em;">Download Image</a>')
 });
 </script>
 {% endblock %}

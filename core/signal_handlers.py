@@ -24,7 +24,7 @@ from wagtail.wagtailembeds.models import Embed
 from wagtail.wagtailsearch.signal_handlers import post_delete_signal_handler
 from wagtail.wagtailimages.formats import get_image_format
 
-from .models import AffixImage, Page, Contact
+from .models import AffixImage, Page, Contact, AffixImageRendition
 
 
 @receiver(post_save, sender=AffixImage)
