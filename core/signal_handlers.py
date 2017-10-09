@@ -1,4 +1,4 @@
-from PIL import Image
+from steganography.steganography import Steganography
 
 try:
     from HTMLParser import HTMLParser
@@ -35,16 +35,28 @@ def image_halfwidth(sender, instance, **kwargs):
 
 @receiver(post_save,sender=AffixImage)
 def watermark_image(sender,instance,**kwargs):
-    from steganography.steganography import Steganography
-    watermark_text=settings.PARI_ENCRYPT_BACKEND['default']['WATERMARK_TEXT']
-    # file_location ='core/test.jpg'
     file_location =str(instance.file)
+    watermark_text=settings.PARI_ENCRYPT_BACKEND['default']['WATERMARK_TEXT']
+    try:
+        text=Steganography.decode('media/'+file_location)
+        print text
+    except:
+        print "No Stegono"
+        Steganography.encode('media/' + file_location, 'media/' + file_location, watermark_text)
     print file_location
-    Steganography.encode('media/'+file_location,'media/'+file_location,watermark_text)
     print "Hello I am here with watermark"
 
 @receiver(post_save,sender=AffixImageRendition)
 def watermarked_image(sender,instance,**kwargs):
+    file_location = str(instance.file)
+    watermark_text = settings.PARI_ENCRYPT_BACKEND['default']['WATERMARK_TEXT']
+    try:
+        text = Steganography.decode('media/' + file_location)
+        print text
+    except:
+        print "No Stegono"
+        Steganography.encode('media/' + file_location, 'media/' + file_location, watermark_text)
+    print file_location
     print "Hello I am here with renditions"
 
 @receiver(post_save)
